@@ -20,11 +20,11 @@ const authOptions = {
           }
         })
 
-        if (!userFound) return null;
+        if (!userFound) throw new Error("email no found");
         console.log(userFound);
 
         const matchPassword = await bcrypt.compare(credentials!.password, userFound.password)
-        if (!matchPassword) return null;
+        if (!matchPassword) throw new Error("Password not match");
 
         return {
           id: userFound.id.toString(),
