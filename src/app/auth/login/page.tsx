@@ -25,6 +25,7 @@ function LoginPage() {
     } else {
       console.log("Enviando al Dashboard");
       router.push("/dashboard");
+      router.refresh();
     }
 
     console.log(res);

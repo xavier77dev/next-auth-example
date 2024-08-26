@@ -4,7 +4,7 @@ import bd from "@/libs/prisma"
 import bcrypt from "bcrypt"
 
 
-const authOptions = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -28,12 +28,16 @@ const authOptions = {
 
         return {
           id: userFound.id.toString(),
-          username: userFound.username,
+          name: userFound.username,
           email: userFound.email
         };
       }
     })
-  ]
+  ],
+  pages: {
+    signIn: "/auth/login",
+    error: "/auth/error"
+  }
 }
 
 const handler = NextAuth(authOptions);
